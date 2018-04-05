@@ -96,7 +96,7 @@ soup = BeautifulSoup(html, 'lxml')
 
 #### SCRAPE DATA
 
-blocks = soup.find('div', 'panel panel-primary').find_all('a')
+blocks = soup.find('div', 'content-padding').find_all('a')
 for block in blocks:
     if '.csv' in block['href'] or '.xls' in block['href'] or '.xlsx' in block['href'] or '.pdf' in block['href']:
         link = block['href']
@@ -107,7 +107,7 @@ for block in blocks:
         data.append([csvYr, csvMth, link])
 arch_html = urllib2.urlopen('http://www.heartofengland.nhs.uk/archive/large-trust-payments/')
 arch_soup = BeautifulSoup(arch_html, 'lxml')
-arch_blocks = arch_soup.find('div', 'tts-body-text').find_all('a')
+arch_blocks = arch_soup.find('div', 'content-padding').find_all('a')
 for block in arch_blocks:
     if '.csv' in block['href'] or '.xls' in block['href'] or '.xlsx' in block['href'] or '.pdf' in block['href']:
         link = block['href']
